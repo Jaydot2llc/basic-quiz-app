@@ -110,6 +110,53 @@ Add the following import to the core or primary style sheet for the project.
 @import "tailwindcss";
 ```
 
+## Testing
+Some additional libraries and configuration must be added for Jest to support tests written using TypeScript.
+
+```cmd
+npm install --save-dev @testing-library/user-event @testing-library/dom @testing-library/react @testing-library/jest-dom
+```
+
+### Testing with Jest and TypeScript
+
+Babel must be installed and configured to support TypeScipt in Jest unit tests.
+
+```cmd
+npm install --save-dev jest @types/jest @babel/preset-typescript
+
+npm install -D jsdom
+
+npm install -D jest-environment-jsdom
+```
+
+Add the `ts-jest` preprocessor to the project.
+
+```cmd
+npm install --save-dev ts-jest
+
+npm install --save-dev @jest/globals
+
+npm install --save-dev ts-node
+
+npm install --save-dev @babel/preset-env @babel/preset-react
+```
+
+### Support for CSS in Testing
+
+```cmd
+npm install --save-dev jest-transform-css
+```
+
+## Additional Dependencies
+
+```cmd
+npm install react-router-dom
+```
+
+
 ## References
 - [Get started with Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite)
 - [React](https://react.dev/)
+- [Configuring Jest](https://jestjs.io/docs/configuration)
+- [Using TypeScript with Jest](https://jestjs.io/docs/getting-started#using-typescript)
+- [React Router](https://reactrouter.com/en/main)
