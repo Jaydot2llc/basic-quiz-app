@@ -121,35 +121,37 @@ npm install --save-dev @testing-library/user-event @testing-library/dom @testing
 
 Babel must be installed and configured to support TypeScipt in Jest unit tests.
 
-```cmd
+Required dependencies:  react-dom, @types/react, jest, babel-jest, @babel/core, @babel/preset-env, @babel/preset-react, and typescript
+
+```sh
 npm install --save-dev jest @types/jest @babel/preset-typescript
 
-npm install -D jsdom
+npm install -D jsdom jest-environment-jsdom
 
-npm install -D jest-environment-jsdom
 ```
 
 Add the `ts-jest` preprocessor to the project.
 
-```cmd
-npm install --save-dev ts-jest
+```sh
+npm install --save-dev jest ts-jest @types/jest babel-jest @babel/preset-env @babel/preset-react @babel/preset-typescript
 
 npm install --save-dev @jest/globals
 
 npm install --save-dev ts-node
 
-npm install --save-dev @babel/preset-env @babel/preset-react
+npm install --save-dev babel-jest @babel/core
+
 ```
 
 ### Support for CSS in Testing
 
-```cmd
+```sh
 npm install --save-dev jest-transform-css
 ```
 
 ## Additional Dependencies
 
-```cmd
+```sh
 npm install react-router-dom
 ```
 
