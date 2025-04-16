@@ -113,7 +113,7 @@ Add the following import to the core or primary style sheet for the project.
 ## Testing
 Some additional libraries and configuration must be added for Jest to support tests written using TypeScript.
 
-```cmd
+```sh
 npm install --save-dev @testing-library/user-event @testing-library/dom @testing-library/react @testing-library/jest-dom
 ```
 
@@ -124,6 +124,12 @@ Babel must be installed and configured to support TypeScipt in Jest unit tests.
 Required dependencies:  react-dom, @types/react, jest, babel-jest, @babel/core, @babel/preset-env, @babel/preset-react, and typescript
 
 ```sh
+npm install -D jest @testing-library/react ts-jest @types/jest ts-node @testing-library/jest-dom jest-environment-jsdom @testing-library/user-event
+
+npm install -D identity-obj-proxy jest-transformer-svg
+
+npm install -D vite-tsconfig-paths
+
 npm install --save-dev jest @types/jest @babel/preset-typescript
 
 npm install -D jsdom jest-environment-jsdom
@@ -133,7 +139,7 @@ npm install -D jsdom jest-environment-jsdom
 Add the `ts-jest` preprocessor to the project.
 
 ```sh
-npm install --save-dev jest ts-jest @types/jest babel-jest @babel/preset-env @babel/preset-react @babel/preset-typescript
+npm install --save-dev jest ts-jest @types/jest babel-jest @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime
 
 npm install --save-dev @jest/globals
 
@@ -162,3 +168,4 @@ npm install react-router-dom
 - [Configuring Jest](https://jestjs.io/docs/configuration)
 - [Using TypeScript with Jest](https://jestjs.io/docs/getting-started#using-typescript)
 - [React Router](https://reactrouter.com/en/main)
+- [Effortless Testing Setup for React with Vite, TypeScript, Jest, and React Testing Library 2025](https://dev.to/teyim/effortless-testing-setup-for-react-with-vite-typescript-jest-and-react-testing-library-1c48)
