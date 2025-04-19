@@ -1,4 +1,4 @@
-import QUESTIONS from '../data/htmlQuestions.ts';
+import QUESTIONS from '../data/javaQuestions.ts';
 import quizIsCompleteImage from '../assets/quiz-complete.png';
 
 export default function Summary({ userAnswers }: { userAnswers: (string | null)[] }) {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import QuestionTimer from './QuestionTimer.tsx';
 import Answers from './Answers.tsx';
-import QUESTIONS from '../data/htmlQuestions.ts';
+import QUESTIONS from '../data/javaQuestions.ts';
 
 interface QuestionProps {
     questionIndex: number;
