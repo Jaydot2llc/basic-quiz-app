@@ -21,9 +21,9 @@ describe('Header() Header method', () => {
 //      expect(logo).toHaveAttribute('src', logoImg);
 
       // Check if the title is rendered with the correct text
-      const title = screen.getByRole('heading', { name: /reactquiz/i });
+      const title = screen.getByRole('heading', { level: 1 });
       expect(title).toBeInTheDocument();
-      expect(title).toHaveTextContent('ReactQuiz');
+      expect(title).toHaveTextContent('React Quiz');
     });
   });
 
@@ -31,7 +31,7 @@ describe('Header() Header method', () => {
   describe('Edge Cases', () => {
     it('should handle missing logo image gracefully', () => {
       // Temporarily mock the logo image import to simulate a missing image
-      jest.mock("../../../assets/quiz-logo.png", () => '');
+      jest.mock("../../../assets/quiz_icon_bw.jpg", () => '');
 
       // Render the Header component
       render(<Header />);
@@ -42,7 +42,7 @@ describe('Header() Header method', () => {
       expect(logo).toHaveAttribute('src', 'test-file-stub'); // Adjust this based on your test setup
 
       // Restore the original mock
-      jest.unmock('../../assets/quiz-logo.png');
+      jest.unmock('../../assets/quiz_icon_bw.jpg');
     });
 
     it('should render the title with correct styles', () => {
@@ -50,8 +50,8 @@ describe('Header() Header method', () => {
       render(<Header />);
 
       // Check if the title has the correct styles applied
-      const title = screen.getByRole('heading', { name: /reactquiz/i });
-      expect(title).toHaveClass('text-6xl font-bold uppercase bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-blue-500');
+      const title = screen.getByRole('heading', { level: 1 });
+      expect(title).toHaveClass('text-6xl font-bold uppercase bg-clip-text text-transparent bg-gradient-to-r from-slate-500 to-stone-500');
     });
   });
 });

@@ -1,5 +1,5 @@
-import QUESTIONS from '../data/javaQuestions.ts';
-import quizIsCompleteImage from '../assets/quiz-complete.png';
+import QUESTIONS from '../data/reactQuestions.ts';
+import quizIsCompleteImage from '../assets/trophy2.jpg';
 
 export default function Summary({ userAnswers }: { userAnswers: (string | null)[] }) {
     const skippedAnswers: (string | null)[] = userAnswers.filter(answer => answer === null);

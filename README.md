@@ -161,6 +161,18 @@ npm install --save-dev jest-transform-css
 npm install react-router-dom
 ```
 
+## Customizations
+Here are some simple instructions for customizing the look and content of this quiz component.
+
+### Change Data Source
+
+Modify the import for the following functions:  Question.tsx, Quiz.tsx, Summary.tsx
+Modify the `Header.tsx` file to reflect the type of quiz.
+
+### Color Theme Customization
+This component uses Tailwind CSS for styling, so you can uses the colors provided by Tailwind to quickly modify the look of the quiz.  In order to customnize the color theme of this quiz application, modify the `index.css` file.
+
+The **quiz-container** container class colors can be modified.
 
 ## References
 - [Get started with Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite)
