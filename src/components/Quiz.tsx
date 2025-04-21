@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import QUESTIONS from '../data/questions.ts';
+import QUESTIONS from '../data/reactQuestions.ts';
 import Question from './Question.tsx';
 import Summary from './Summary.tsx';
 
