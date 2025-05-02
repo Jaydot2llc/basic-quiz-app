@@ -1,14 +1,9 @@
-import { useEffect, useState } from 'react';
-import { getQuizData } from '../services/DataService.ts';  
-import type { QuestionType } from '../services/DataService.ts';
+import { useContext } from 'react';
+import { QuestionsContext } from '../store/questions-context.tsx';
 import quizIsCompleteImage from '../assets/trophy2.jpg';
 
 export default function Summary({ userAnswers }: { userAnswers: (string | null)[] }) {
-    const [questions, setQuestions] = useState<QuestionType[]>([]);
-
-    useEffect(() => {
-        getQuizData().then((data) => setQuestions(data));
-    }, []);
+    const { questions } = useContext(QuestionsContext);
     
     const skippedAnswers: (string | null)[] = userAnswers.filter(answer => answer === null);
     const correctAnswers: (string | null)[] = userAnswers.filter((answer, index) => answer === questions[index].answers[0]);

@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { getQuizData } from '../services/DataService.ts';  
 import type { QuestionType } from '../services/DataService.ts';
-// import QUESTIONS from '../data/reactQuestions.ts';
 
 export const QuestionsContext = createContext<{
     questions: QuestionType[];

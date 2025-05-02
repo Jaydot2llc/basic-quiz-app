@@ -1,4 +1,4 @@
-import QUESTIONS from '../data/reactQuestions.ts';
+import QUESTIONS from '../data/oneQuestions.ts';
 
 export interface QuestionType {
     id: string;

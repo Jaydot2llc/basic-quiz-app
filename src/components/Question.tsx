@@ -65,7 +65,7 @@ export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer
     }
 
     return (
-        <div>
+        <div className="flex flex-col items-center font-mono max-w-3xs md:max-w-screen">
             <QuestionTimer
                 key={timer}
                 timeout={timer} 

@@ -101,20 +101,6 @@
   margin: 2rem 0;
 }
 
-/* #summary h3 {
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 1rem;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #2c203d;
-  color: #d8cde8;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-} */
-
 #summary h3 {
  @apply flex rounded-full mx-auto w-10 h-10 justify-center items-center bg-black text-white text-xl;
 }
