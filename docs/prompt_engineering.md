@@ -7,6 +7,7 @@ The Basic Quiz app using large language models to generate question data.  The p
 Use the following verbiage:
 
 Generate a list of [number of questions] [topic] questions and answers.  The questions will each have four possible answers with the first answer always being the first in the list of answers.  The format should be as follows.
+```js
 [
     {
       id: 'q1',
@@ -19,3 +20,4 @@ Generate a list of [number of questions] [topic] questions and answers.  The que
       ],
     },
 ]
+```
