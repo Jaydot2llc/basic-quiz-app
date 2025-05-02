@@ -1,7 +1,8 @@
+import { useContext } from 'react';
 import { useState } from 'react';
 import QuestionTimer from './QuestionTimer.tsx';
 import Answers from './Answers.tsx';
-import QUESTIONS from '../data/reactQuestions.ts';
+import { QuestionsContext } from '../store/questions-context.tsx';
 
 interface QuestionProps {
     questionIndex: number;
@@ -20,7 +21,9 @@ const TIME_TO_NEXT_QUESTION = 2000;
 
 export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer } : QuestionProps) {
     const [answer, setAnswer] = useState<Answer>({selectedAnswer: '', isCorrect: null});
+    const { questions } = useContext(QuestionsContext);
     console.log('Question index:', questionIndex);
+    console.log('Question:', questions);
 
     let timer = MAX_TIME;
 
@@ -44,7 +47,7 @@ export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer
         setTimeout(() => {
             setAnswer({
                 selectedAnswer: answer,
-                isCorrect: QUESTIONS[questionIndex].answers[0] === answer
+                isCorrect: questions[questionIndex].answers[0] === answer
             } as Answer);
 
             setTimeout(() => {
@@ -62,18 +65,18 @@ export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer
     }
 
     return (
-        <>
+        <div className="flex flex-col items-center font-mono max-w-3xs md:max-w-screen">
             <QuestionTimer
                 key={timer}
                 timeout={timer} 
                 onTimeout={answer.selectedAnswer === '' ? onSkipAnswer : () => {}}
                 mode={answerState} />
-            <h2 className="mt-4">{QUESTIONS[questionIndex].text}</h2>
+            <h2 className="mt-4">{questions[questionIndex].text}</h2>
             <Answers 
-                answers={QUESTIONS[questionIndex].answers} 
+                answers={questions[questionIndex].answers} 
                 onAnswerSelected={handleAnswerSelected} 
                 answerState={answerState} 
                 selectedAnswer={answer.selectedAnswer} />
-        </>
+        </div>
     );
 }

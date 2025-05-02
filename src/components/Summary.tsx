@@ -1,12 +1,15 @@
-import QUESTIONS from '../data/reactQuestions.ts';
+import { useContext } from 'react';
+import { QuestionsContext } from '../store/questions-context.tsx';
 import quizIsCompleteImage from '../assets/trophy2.jpg';
 
 export default function Summary({ userAnswers }: { userAnswers: (string | null)[] }) {
+    const { questions } = useContext(QuestionsContext);
+    
     const skippedAnswers: (string | null)[] = userAnswers.filter(answer => answer === null);
-    const correctAnswers: (string | null)[] = userAnswers.filter((answer, index) => answer === QUESTIONS[index].answers[0]);
+    const correctAnswers: (string | null)[] = userAnswers.filter((answer, index) => answer === questions[index].answers[0]);
 
-    const skippedAnswersPercentage: number = Math.round((skippedAnswers.length / QUESTIONS.length) * 100);
-    const correctAnswersPercentage: number = Math.round((correctAnswers.length / QUESTIONS.length) * 100);
+    const skippedAnswersPercentage: number = Math.round((skippedAnswers.length / questions.length) * 100);
+    const correctAnswersPercentage: number = Math.round((correctAnswers.length / questions.length) * 100);
     const incorrectAnswersPercentage: number = Math.round(100 - skippedAnswersPercentage - correctAnswersPercentage);
     return (
         <div id="summary">
@@ -32,7 +35,7 @@ export default function Summary({ userAnswers }: { userAnswers: (string | null)[
 
                     if(answer === null) {
                         cssClasses += ' skipped';
-                    } else if(answer === QUESTIONS[index].answers[0]) {
+                    } else if(answer === questions[index].answers[0]) {
                         cssClasses += ' correct';
                     } else {
                         cssClasses += ' incorrect';
@@ -40,7 +43,7 @@ export default function Summary({ userAnswers }: { userAnswers: (string | null)[
                     return (
                         <li key={index}>
                             <h3>{index + 1}</h3>
-                            <p className="question">{QUESTIONS[index].text}</p>
+                            <p className="question">{questions[index].text}</p>
                             <p className={cssClasses}>{answer ?? 'skipped'}</p>
                         </li>
                     );

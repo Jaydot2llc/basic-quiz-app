@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import { QUIZ_TITLE } from '../services/DataService';
 
 // src/components/__tests__/Header.test.tsx
 import { render, screen } from '@testing-library/react';
@@ -23,7 +24,7 @@ describe('Header() Header method', () => {
       // Check if the title is rendered with the correct text
       const title = screen.getByRole('heading', { level: 1 });
       expect(title).toBeInTheDocument();
-      expect(title).toHaveTextContent('React Quiz');
+      expect(title).toHaveTextContent(QUIZ_TITLE);
     });
   });
 
