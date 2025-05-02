@@ -1,13 +1,19 @@
-import { useState, useCallback } from 'react';
-import QUESTIONS from '../data/reactQuestions.ts';
+import { useState, useCallback, useEffect } from 'react';
+import { getQuizData } from '../services/DataService.ts';  
+import type { QuestionType } from '../services/DataService.ts';
 import Question from './Question.tsx';
 import Summary from './Summary.tsx';
 
 export default function Quiz() {
     const [userAnswers, setUserAnswers] = useState<(string | null)[]>([]);
+    const [questions, setQuestions] = useState<QuestionType[]>([]);
+
+    useEffect(() => {
+        getQuizData().then((data) => setQuestions(data));
+    }, []);
 
     const activeQuestionIndex: number = userAnswers.length;
-    const quizIsComplete = activeQuestionIndex === QUESTIONS.length;
+    const quizIsComplete = activeQuestionIndex === questions.length;
 
     const handleSelectAnswer = useCallback(function handleSelectAnswer(selectedAnswer: string | null) {
         console.log('Answer selected is:', selectedAnswer);

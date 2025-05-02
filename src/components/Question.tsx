@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import QuestionTimer from './QuestionTimer.tsx';
 import Answers from './Answers.tsx';
-import QUESTIONS from '../data/reactQuestions.ts';
+import { getQuizData } from '../services/DataService.ts';  
+import type { QuestionType } from '../services/DataService.ts';
 
 interface QuestionProps {
     questionIndex: number;
@@ -23,6 +24,12 @@ export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer
     console.log('Question index:', questionIndex);
 
     let timer = MAX_TIME;
+    const [questions, setQuestions] = useState<QuestionType[]>([]);
+
+    useEffect(() => {
+        getQuizData().then((data) => setQuestions(data));
+        console.log(questions)
+    }, []);
 
     if(answer.selectedAnswer) {
         timer = TIME_TO_ANSWER;
@@ -40,11 +47,10 @@ export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer
             selectedAnswer: answer,
             isCorrect: null
         } as Answer);
-
         setTimeout(() => {
             setAnswer({
                 selectedAnswer: answer,
-                isCorrect: QUESTIONS[questionIndex].answers[0] === answer
+                isCorrect: questions[questionIndex].answers[0] === answer
             } as Answer);
 
             setTimeout(() => {
@@ -68,9 +74,9 @@ export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer
                 timeout={timer} 
                 onTimeout={answer.selectedAnswer === '' ? onSkipAnswer : () => {}}
                 mode={answerState} />
-            <h2 className="mt-4">{QUESTIONS[questionIndex].text}</h2>
+            <h2 className="mt-4">{questions[questionIndex].text}</h2>
             <Answers 
-                answers={QUESTIONS[questionIndex].answers} 
+                answers={questions[questionIndex].answers} 
                 onAnswerSelected={handleAnswerSelected} 
                 answerState={answerState} 
                 selectedAnswer={answer.selectedAnswer} />
