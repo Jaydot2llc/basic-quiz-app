@@ -1,5 +1,7 @@
 # Basic Quiz App
 
+Documentation for customizing this application can be found in the [docs directory](docs/index.md).
+
 This application is built using a Typescript+Vite template.
 
 Currently, two official plugins are available:

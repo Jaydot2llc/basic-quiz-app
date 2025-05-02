@@ -1,5 +1,7 @@
 import QUESTIONS from '../data/oneQuestions.ts';
 
+export const QUIZ_TITLE = 'Sample Quiz';
+
 export interface QuestionType {
     id: string;
     text: string;
