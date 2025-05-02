@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { use } from 'react';
+import { useState } from 'react';
 import QuestionTimer from './QuestionTimer.tsx';
 import Answers from './Answers.tsx';
-import { getQuizData } from '../services/DataService.ts';  
-import type { QuestionType } from '../services/DataService.ts';
+import { QuestionsContext } from '../store/questions-context.tsx';
 
 interface QuestionProps {
     questionIndex: number;
@@ -21,15 +21,11 @@ const TIME_TO_NEXT_QUESTION = 2000;
 
 export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer } : QuestionProps) {
     const [answer, setAnswer] = useState<Answer>({selectedAnswer: '', isCorrect: null});
+    const { questions } = use(QuestionsContext);
     console.log('Question index:', questionIndex);
+    console.log('Question:', questions);
 
     let timer = MAX_TIME;
-    const [questions, setQuestions] = useState<QuestionType[]>([]);
-
-    useEffect(() => {
-        getQuizData().then((data) => setQuestions(data));
-        console.log(questions)
-    }, []);
 
     if(answer.selectedAnswer) {
         timer = TIME_TO_ANSWER;
@@ -47,6 +43,7 @@ export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer
             selectedAnswer: answer,
             isCorrect: null
         } as Answer);
+
         setTimeout(() => {
             setAnswer({
                 selectedAnswer: answer,
@@ -68,7 +65,7 @@ export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer
     }
 
     return (
-        <>
+        <div>
             <QuestionTimer
                 key={timer}
                 timeout={timer} 
@@ -80,6 +77,6 @@ export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer
                 onAnswerSelected={handleAnswerSelected} 
                 answerState={answerState} 
                 selectedAnswer={answer.selectedAnswer} />
-        </>
+        </div>
     );
 }
