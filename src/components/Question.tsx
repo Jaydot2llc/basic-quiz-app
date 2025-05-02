@@ -1,4 +1,4 @@
-import { use } from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import QuestionTimer from './QuestionTimer.tsx';
 import Answers from './Answers.tsx';
@@ -21,7 +21,7 @@ const TIME_TO_NEXT_QUESTION = 2000;
 
 export default function Question({ questionIndex, onAnswerSelected, onSkipAnswer } : QuestionProps) {
     const [answer, setAnswer] = useState<Answer>({selectedAnswer: '', isCorrect: null});
-    const { questions } = use(QuestionsContext);
+    const { questions } = useContext(QuestionsContext);
     console.log('Question index:', questionIndex);
     console.log('Question:', questions);
 
